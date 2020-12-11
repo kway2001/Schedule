@@ -25,6 +25,12 @@ int main(int argc, char *argv[]) {
 	
 	//1. FILE pointer open & error handling
 	//fill code here ----
+	fp = fopen("schedule.dat", "r");
+	if ((fp = fopen("schedule.dat", "r")) == NULL)
+	{
+		printf("Error: Failed to get data");
+		return -1;
+	}
 	
 	//initializing the list
 	printf("Reading the data files... \n");
