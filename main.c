@@ -22,11 +22,12 @@ int main(int argc, char *argv[]) {
 	void *schedInfo;
 	int option;
 	int cnt;
+	int menu_num;	//main menu select number
 	
 	//1. FILE pointer open & error handling
 	//fill code here ----
-	fp = fopen("schedule.dat", "r");
-	if ((fp = fopen("schedule.dat", "r")) == NULL)
+	fp = fopen("schedule.dat", "r");		//file open
+	if ((fp = fopen("schedule.dat", "r")) == NULL)		//error handling 
 	{
 		printf("Error: Failed to get data");
 		return -1;
@@ -50,6 +51,7 @@ int main(int argc, char *argv[]) {
 	
 	
 	//fill code here ---- close the file pointer
+	fclose(schedule.dat);
 	
 	printf("Read done! %i schedules are read\n", list_len(list));
 	
@@ -59,12 +61,13 @@ int main(int argc, char *argv[]) {
 	{
 		//3. menu printing
 		//fill code here ---- 
+		menu_printing();		//menu printing function
 		
 		//4. get option from keyboard
 		//fill code here ----
+		menu_num = menu_select();
 		
-		
-		switch(option)
+		switch(menu_num)
 		{
 			case 1: //print all the schedules
 				printf("printing all the schedules in the scheduler.....\n\n\n");
