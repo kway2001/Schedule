@@ -27,12 +27,12 @@ char month_string[13][4] =
 //enum definitions
 typedef enum scheduleType {
 	drama=0, 		//드라마 
-	movie=1, 			//영화 
-	advertisement=2, 	//광고 
-	entertainment=3, 	//예능 
-	meeting=4,		//회의 
-	fitness=5,		//운동 
-	privacy=6			//개인사 
+	movie, 			//영화 
+	advertisement, 	//광고 
+	entertainment, 	//예능 
+	meeting,		//회의 
+	fitness,		//운동 
+	privacy			//개인사 
 } scheduleType_e;
 
 
@@ -85,17 +85,18 @@ void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 {
 	schedInfo_t* schedPtr;
 	
+	schedPtr = (schedInfo_t*)malloc(sizeof(schedInfo_t));
 	//error handler
 	if (schedPtr == NULL) {
 		printf("error! memory allocation error.\n");
 		return -1;
 	}
 	//allocate memory and set the member variables
-	schedInfo.name = name;
-	schedInfo.place = place;
-	schedInfo.type = type;
-	schedInfo.month = month;
-	schedInfo.day = day;
+	strcpy(schedPtr->name, name);
+	strcpy(schedPtr->place, place);
+	schedPtr->type = type;
+	schedPtr->month = month;
+	schedPtr->day = day;
 	
 	return (void*)schedPtr;
 }
@@ -126,6 +127,10 @@ char* sched_getPlace(void* obj)
 //convert the name of the type into the enum(integer) value
 int sched_convertType(char* typeName)
 {
-	
+	char name;
+	name = &typeName;
+	enum scheduleType t;
+	t = name;
+	return (int)t;
 }
 

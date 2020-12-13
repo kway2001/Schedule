@@ -44,10 +44,8 @@ int main(int argc, char *argv[]) {
 	while ( fgets(schedInfo, 100, fp) != NULL )
 	{
 		//fill code here -- generate genSchedInfo structure by genSchedInfo function
-		//name = fgets(schedInfo, 100, fp);
 		strcpy(name, schedInfo);
-		list_gdtNextNd(schedInfo);
-		//place = fgets(schedInfo, 100, fp);
+		list_getNextNd(schedInfo);
 		strcpy(place, schedInfo);
 		list_getNextNd(schedInfo);
 		type = fgets(schedInfo, sizeof(int), fp);
@@ -88,10 +86,12 @@ int main(int argc, char *argv[]) {
 				while (list_isEndNode(ndPtr) == 0)
 				{
 					//file code here -- print count and each scheduling info element
+					sched_print(ndPtr);
 					ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 					schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 					
 					//fill code this part - end
+					printf("\n\n\n");
 				}
 				
 				break;
@@ -127,14 +127,15 @@ int main(int argc, char *argv[]) {
 				}
 				
 				break;
-				
+			/*	
 			case 4:
 				printf("which type ?\n");
 				sched_printTypes();
+				scanf("%s", typeName);
 				printf("your choice : ");
 				scanf("%s", typeName);
 				
-				if (/* fill code here -- convert the type and check if the type is valid */)
+				if ( fill code here -- convert the type and check if the type is valid )
 				{
 					ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)
@@ -151,7 +152,7 @@ int main(int argc, char *argv[]) {
 					printf("wrong type name!\n");
 				}
 				break;
-				
+			*/	
 			case 5:
 				printf("Bye!\n\n");
 				exit_flag = 1;
