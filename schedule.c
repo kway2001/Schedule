@@ -88,6 +88,7 @@ void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 	//error handler
 	if (schedPtr == NULL) {
 		printf("error! memory allocation error.\n");
+		return -1;
 	}
 	//allocate memory and set the member variables
 	schedInfo.name = name;
