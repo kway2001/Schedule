@@ -18,3 +18,8 @@ int menu_select()		//get main menu select number
 	scanf("%d", &num);
 	return num;
 }
+
+void line()
+{
+	printf(" -------------------------------\n");
+}

@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 		char name[100];
 		char place[100];
 		int type;
-		int month; 
+		int month;
 		int day;
 		
 		fscanf(fp, "%s %s %d %d %d\n", &name, &place, &type, &month, &day);
@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
 		
 		//4. get option from keyboard
 		//fill code here ----
-		menu_num = menu_select();
+		menu_num = menu_select();		//enter option number
 		
 		switch(menu_num)
 		{
@@ -83,16 +83,24 @@ int main(int argc, char *argv[]) {
 				printf("printing all the schedules in the scheduler.....\n\n\n");
 				
 				ndPtr = list;
+				cnt = 1;
 				while (list_isEndNode(ndPtr) == 0)
 				{
 					//file code here -- print count and each scheduling info element
+					line();
+					printf("%d. ", cnt);		//schedule nember
+					
 					sched_print(ndPtr);
+
 					ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 					schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 					
 					//fill code this part - end
-					printf("\n\n\n");
+					cnt++;
+					
 				}
+				line();
+				printf("\n\n\n");
 				
 				break;
 				
@@ -114,7 +122,7 @@ int main(int argc, char *argv[]) {
 				
 			case 3:
 				printf("which place ? : ");
-				scanf("%s", place);
+				scanf("%s", &place);
 				
 				ndPtr = list;
 				while (list_isEndNode(ndPtr) == 0)
